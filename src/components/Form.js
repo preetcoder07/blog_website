@@ -100,14 +100,3 @@ function Form(props) {
 //     );
 // }
 
-function Main() {
-    return (
-        <div>
-
-            <Form showalert={(msg, type) => console.log(msg, type)} mode="light" />
-        </div>
-    );
-}
-
-export default Main;
-
