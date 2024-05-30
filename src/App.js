@@ -1,5 +1,5 @@
 import Navbar from './components/Navbar';
-import Main from './components/Main';
+import Form from './components/Form';
 import { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -25,7 +25,7 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/main">
-            <Main mode={mode} />
+            <Form mode={mode} />
           </Route>
           <Route exact path="/">
 
