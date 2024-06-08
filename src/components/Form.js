@@ -2,70 +2,96 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types'
 
 function Form(props) {
-    const upper_case = () => {
-        setText(text.toUpperCase());
-        props.showalert("Converted into uppercase !", "success");
+
+    const [history, setHistory] = useState([]);
+    const [currentIndex, setCurrentIndex] = useState(-1);
+    const [text, setText] = useState("Start your blog ... ");
+    const [bold, setBold] = useState(false);
+
+    const handleChange = (event) => {
+        const newText = event.target.value;
+        setText(newText);
+        setHistory([...history.slice(0, currentIndex + 1), newText]);
+        setCurrentIndex(currentIndex + 1);
     };
 
-    const change_value = (event) => {
-        setText(event.target.value);
+    // Function to undo changes
+    const undo = () => {
+        if (currentIndex > 0) {
+            setCurrentIndex(currentIndex - 1);
+            setText(history[currentIndex - 1]);
+        }
     };
 
-    const lower_case = () => {
-        setText(text.toLowerCase());
-        props.showalert("Converted into lowercase !", "success");
+    // Function to redo changes
+    const redo = () => {
+        if (currentIndex < history.length - 1) {
+            setCurrentIndex(currentIndex + 1);
+            setText(history[currentIndex + 1]);
+        }
+    };
+
+    const Bold_text = () => {
+        setBold(!bold);
     };
 
     const clear_text = () => {
         setText("");
-        props.showalert("Text Cleared !", "success");
-    };
-
-    const multiply_text = () => {
-        setText(text.concat(text));
-        props.showalert("Text has been multiplied !", "success");
-    };
+        setTimeout(() => {
+            alert("Cleared !")
+        }, 200);
+    }
 
     const text_copy = () => {
         navigator.clipboard.writeText(text);
-        props.showalert("Text copied !", "success");
-    };
-
-    const [text, setText] = useState("Start your blog ... ");
+        alert('Text has been copied !')
+    }
 
     return (
         <>
             <div className="container my-3">
                 <div className="mb-4" style={{ color: props.mode === "dark" ? "white" : "black" }}>
+
                     <h3>Chronicals: Your Voice, Your Platform</h3>
+
+                    <button disabled={text.length === 0} className="btn btn-success mx-2 my-2" onClick={clear_text}>
+                        Clear
+                    </button>
+
+                    <button disabled={text.length === 0} id="my_box" className="btn btn-info mx-2 my-2" onClick={text_copy}>
+                        Copy
+                    </button>
+
+                    <button disabled={text.length === 0} id="my_box" className="btn btn-info mx-2 my-2" onClick={Bold_text}>
+                        {bold ? "Unbold" : "Bold"}
+                    </button>
+
+                    <button disabled={text.length === 0} id="my_box" className="btn btn-info mx-2 my-2" onClick={undo}>
+                        undo
+                    </button>
+
+                    <button disabled={text.length === 0} id="my_box" className="btn btn-info mx-2 my-2" onClick={redo}>
+                        redo
+                    </button>
+
+                    <button disabled={text.length === 0} id="my_box" className=" submit_btn btn btn-success mx-2 my-2" >
+                        Submit
+                    </button>
+
                     <textarea
-                        className="form-control"
-                        value={text}
+                        className="form-control" value={text}
                         id="my_box"
                         rows="8"
-                        onChange={change_value}
+                        onChange={handleChange}
                         style={{
                             backgroundColor: props.mode === "dark" ? "#3a5fa9" : "white",
                             color: props.mode === "dark" ? "white" : "black",
-                            border: "2px solid white"
+                            border: "3.5px solid white",
+                            fontWeight: bold ? "bold" : "normal" // Apply bold style conditionally
                         }}
                     ></textarea>
                 </div>
-                <button disabled={text.length === 0} className="btn btn-primary mx-3 my-2" onClick={upper_case}>
-                    UpperCase
-                </button>
-                <button disabled={text.length === 0} className="btn btn-secondary mx-2 my-2" onClick={lower_case}>
-                    LowerCase
-                </button>
-                <button disabled={text.length === 0} className="btn btn-success mx-2 my-2" onClick={clear_text}>
-                    Clear
-                </button>
-                <button disabled={text.length === 0} className="btn btn-danger mx-2 my-2" onClick={multiply_text}>
-                    Multiply
-                </button>
-                <button disabled={text.length === 0} id="my_box" className="btn btn-info mx-2 my-2" onClick={text_copy}>
-                    Copy
-                </button>
+
             </div>
 
             <div className="container my-2" style={{ color: props.mode === "dark" ? "white" : "black" }}>
@@ -84,19 +110,12 @@ function Form(props) {
     );
 }
 
-//             <div className="container mt-5 mb-5">
-//                 <h2 style={{ color: props.mode === "dark" ? "white" : "black" }}>Follow me on :</h2>
-//                 <a href="https://www.instagram.com/preet_gusain200_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" className="" style={{ textDecoration: 'none', color: props.mode === "dark" ? "white" : "black" }}>
-//                     <strong>Instagram</strong>
-//                 </a>
-//                 <a href="www.linkedin.com/in/preet-gusain-986b022a5" className="mx-3" style={{ textDecoration: 'none', color: props.mode === "dark" ? "white" : "black" }}>
-//                     <strong>LinkedIn</strong>
-//                 </a>
-//                 <a href="#" className="mx-3" style={{ textDecoration: 'none', color: props.mode === "dark" ? "white" : "black" }}>
-//                     <strong>Github</strong>
-//                 </a>
-//             </div>
-//         </>
-//     );
-// }
+function Main() {
+    return (
+        <div>
+            <Form showalert={(msg, type) => console.log(msg, type)} mode="light" />
+        </div>
+    );
+}
 
+export default Form;
