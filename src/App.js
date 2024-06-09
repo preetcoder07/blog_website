@@ -1,5 +1,6 @@
 import Navbar from './components/Navbar';
 import Form from './components/Form';
+import Home from './components/Home';
 import { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -24,10 +25,16 @@ function App() {
       <Navbar mode={mode} toggle={toggle} />
       <Router>
         <Switch>
+
+          <Route exact path="/home">
+            <Home mode={mode} />
+          </Route>
+
           <Route exact path="/main">
             <Form mode={mode} />
           </Route>
-          <Route exact path="/">
+
+          <Route exact path="/home">
 
           </Route>
         </Switch>
