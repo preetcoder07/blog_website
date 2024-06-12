@@ -37,7 +37,7 @@ export default function Navbar(props) {
                     <div className='nav_btns'>
                         <form className="d-flex" role="search">
                             <button className="create btn btn-outline-success btn_create" type="submit">
-                                <a href="/main" style={{ color: props.mode === "dark" ? "white" : "black" }}>Create<b> +</b></a>
+                                <a href="/main" style={{ color: props.mode === "dark" ? "white" : "black" }}>New Blog<b> +</b></a>
                             </button>
                         </form>
 
@@ -47,9 +47,7 @@ export default function Navbar(props) {
                         </div>
 
 
-                        <button className="btn btn-outline-secondary" onClick={shareBlog} style={{ marginLeft: '10px' }}>
-                            Share Blog
-                        </button>
+                       
                     </div>
                 </div>
             </div>

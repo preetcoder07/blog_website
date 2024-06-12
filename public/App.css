@@ -1,52 +1,93 @@
 
+
 .home_top {
-    border-top: 4px  solid rgb(3, 24, 255);
-    border-left: 4px  solid rgb(3, 24, 255);
+    border-top: 4px solid rgb(3, 24, 255);
+    border-left: 4px solid rgb(3, 24, 255);
     border-radius: 50px;
     color: rgb(8, 60, 111);
-    width: 216vh;
+    width: 100%;
 }
 
 .top_2 {
     color: rgb(15, 133, 149);
 }
 
-.nav_btns{
+.nav_btns {
     display: flex;
     justify-content: space-between;
     gap: 40px;
+    margin-right: 5px;
 }
 
 .box1 {
     width: 700px;
 }
 
-.img_text{
-    display:flex ;
+.img_text {
+    display: flex;
     justify-content: space-between;
-  
+
 }
 
-.img_lap{
+.img_lap {
     width: 610px;
     height: 400px;
     box-shadow: 15px 15px 15px #f6eaea;
     border-radius: 15px;
     transition: transform .2s;
 }
-.img_lap:hover{
-    transform: scale(1.05); 
+
+.img_lap:hover {
+    transform: scale(1.05);
     box-shadow: 15px 15px 15px black;
-    
+
 }
 
 .signup {
     border: 4px solid rgb(255, 255, 255);
     padding: 30px;
-    margin-top: 30px;
 }
 
-.footer{
-    margin: 0px;
+
+
+/* Ensure all elements respect the box model */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Prevent horizontal scrolling */
+body {
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    /* Ensure body width is 100% of viewport width */
+}
+
+/* Ensure specific elements fit within the viewport */
+.container,
+.row,
+.col-md-6,
+.col-lg-7,
+.col-lg-5,
+.col {
+    max-width: 100%;
+    overflow: hidden;
+}
+
+
+
+/* Higher specificity selector */
+.btn_create a {
+    text-decoration: none !important;
+    color: inherit; /* Ensures the link inherits color from its parent */
+}
+
+/* Alternatively, use an ID or another specific class if needed */
+form.d-flex .btn_create a {
+    text-decoration: none !important;
+    color: inherit;
 }
 

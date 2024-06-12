@@ -69,6 +69,7 @@ function Form(props) {
         link.download = `${title || 'Untitled'}-blog.txt`;
         link.click();
         URL.revokeObjectURL(link.href);
+        alert("File saved 👍👍")
     };
 
 
