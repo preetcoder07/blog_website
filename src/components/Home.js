@@ -56,8 +56,8 @@ export default function Home(props) {
 
             <div className="row align-items-center  signup" >
                 <div className="col-lg-7 text-center text-lg-start" style={{ color: props.mode === "dark" ? "white" : "black" }} >
-                    <h1 className="display-4 fw-bold lh-1 mb-3">Vertically centered hero sign-up form</h1>
-                    <p className="col-lg-10 fs-4">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
+                    <h1 className="display-4 fw-bold lh-1 mb-3">Join Our Blogging Community Sign Up Today!</h1>
+                    <p className="col-lg-10 fs-4">Unlock exclusive content, connect with fellow enthusiasts, and share your stories. Don't miss out on the latest updates and insights. Join now</p>
                 </div>
                 <div className="col-md-10 mx-auto col-lg-5">
                     <form className="p-4 p-md-5 border rounded-3 bg-body-tertiary">
@@ -91,7 +91,7 @@ export default function Home(props) {
                         <li className="nav-item"><a href="#" className="nav-link px-2 ">FAQs</a></li>
                         <li className="nav-item"><a href="#" className="nav-link px-2 ">About</a></li>
                     </ul>
-                    <p className="text-center "  style={{ color: props.mode === "dark" ? "white" : "black" }}>© 2024 Company, Inc</p>
+                    <p className="text-center "  style={{ color: props.mode === "dark" ? "white" : "black" }}>© 2024 Chronicals, pvt</p>
                 </footer>
             </div>
 
