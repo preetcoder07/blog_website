@@ -12,14 +12,6 @@ export default function Navbar(props) {
         }
     }
 
-    const shareBlog = () => {
-        // Construct the URL for sharing the blog
-        const shareURL = ``;
-
-        // Open the share URL in a new tab
-        window.open(shareURL, '_blank');
-    };
-
     return (
         <nav className="navbar navbar-expand-lg navbar bg">
             <div className="container-fluid">
@@ -47,7 +39,7 @@ export default function Navbar(props) {
                         </div>
 
 
-                       
+
                     </div>
                 </div>
             </div>
